@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<aside id="colorlib-hero" class="js-fullheight">
+		<div class="flexslider js-fullheight">
+			<ul class="slides" style="height: 900px;">
+		   	<li style="  background-image: url({% static 'images/img_bg_1.jpg' %});" >
+{#                <li style="background-color: #449d44;height: 900px;">#}
+
+		   		<div class="container" >
+		   			<div class="row" >
+			   			<div style="height: 50px">
+			   				<div class="slider-text-inner" style="margin-bottom: 100px;height: 900px;">
+
+									   				</div>
+			   			</div>
+			   		</div>
+		   		</div>
+		   	</li>
+{#                <div style="width: 100%; height:200px;"></div>#}
+            </ul>
+		 </div>
+	</aside>
+    <h1 style="margin-top: 100px;" align="center">Lawyer Register</h1>
+			   					<form action="" method="post" enctype="multipart/form-data" align="center" >
+                                    {% csrf_token %}
+								<div style="height: 900px;">
+									<br>
+									<input style="width: 500px;color: black" type="text" name="name" placeholder="Enter Your Name" required=""  autocomplete="off"><br><br>
+									<input style="width: 500px;color: black" type="text" name="emnumber" placeholder="Enrollment Number" required=""  autocomplete="off"><br><br>
+
+									<input style="width: 500px;color: black"  autocomplete="off" type="text" name="company" placeholder="Company/Firm Name" required=""><br><br>
+
+									<textarea style="width: 500px;color: black" type="text" autocomplete="off" name="address" placeholder="address" required=""></textarea><br><br>
+									<input style="width: 500px;color: black" type="text" autocomplete="off" pattern="[6-9]{1}[0-9]{9}" name="phone" placeholder="Phone Number" required=""><br><br>
+
+									<input style="width: 500px;color: black" type="email" autocomplete="off" name="email" placeholder="Email" required=""><br><br>
+
+									<input style="width: 500px;color: black" type="text"  name="edu"  placeholder="Education"  required=""><br><br>
+									<input style="width: 500px;color: black" type="text" autocomplete="off" name="parea" placeholder="Practice Area" required=""><br><br>
+                                     <label for="lname">Specialization:</label>
+                                     <select name="speci" id="iname" type="text" style="width: 350px;height: 50px;" >
+  <option value="Criminal_Low">Criminal Law</option>
+  <option value="Coporate_Low">Coporate Law</option>
+  <option value="Cyber_Low">Cyber Law</option>
+  <option value="Intellectual_Property_Low">Intellectual Property Law</option>
+   <option value="Labour_Low">Labour Law</option>
+</select><br><br>
+
+{#									<input style="width: 500px;color: black" type="text" autocomplete="off" name="speci" placeholder="Specialization" required=""><br><br>#}
+
+                                    <textarea style="width: 500px;color: black" type="text" autocomplete="off" name="exper_lowyer" placeholder="Lawyer and Experience" required=""></textarea><br><br>
+                                    <label>Upload Photo</label>
+									<input style="width: 500px;color: black; margin-left: 650px;" type="file" title="Upload Photo" name="photo" placeholder="photo" required=""><br>
+									<input style="width: 500px;color: black" type="password" name="password" placeholder="Set Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><br><br>
+                                    <input style="width: 500px;color: black" type="password" name="con_password" placeholder="Confirm Password" required=""><br><br>
+
+									<div class="text-center mb-4">
+										<p>Registration Fee = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+											<path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
+										  </svg>500/-</p>			
+										<h1><b>PAYMENT</b></h1>
+										<img class="img-fluid" src="https://img.icons8.com/color/48/000000/mastercard-logo.png" />
+                  					<img class="img-fluid" src="https://img.icons8.com/color/48/000000/visa.png" />
+									  </div>		
+									
+									<input style="width: 500px;color: black" type="text" name="Card Holder Name" placeholder="Card Holder Name" required="" autocomplete="off"><br><br>
+									<input style="width: 500px;color: black" type="text" name="Card Number" placeholder="Card Number" required="" autocomplete="off"><br><br>
+									<input style="width: 500px;color: black" type="text" name="Expiry" placeholder="Expiry" required="" autocomplete="off"><br><br>
+									<input style="width: 500px;color: black" type="text" name="CVV" placeholder="CVV" required="" autocomplete="off"><br><br>
+
+									<button style="background-color:black;border-radius: 25px;" name="register" type="Submit">Sign Up</button>
+								</div>
+								</form>
+
+
+
+{% endblock %}

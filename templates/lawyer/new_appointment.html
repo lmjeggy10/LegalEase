@@ -1,0 +1,50 @@
+
+{% extends 'lawyer/law_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<h2 align="center">New Appoinments</h2>
+
+
+
+<table class="table table-bordered table-striped table-hover" style="width: 900px; margin-left: 100px;" >
+
+
+		<th class="info" style="background-color: lightgreen;">Client Name</th>
+
+		<th class="info" style="background-color: lightgreen;">Contact</th>
+		<th class="info" style="background-color: lightgreen;">Reason</th>
+		<th class="info" style="background-color: lightgreen;">Date And Time</th>
+		<th class="info" style="background-color: lightgreen;">Reject</th>
+
+
+{% for li in l %}
+		<tr>
+
+			<td>{{ li.client.user.first_name }}</td>
+
+			<td>{{ li.client.address }},{{ li.client.phone }},{{ li.client.user.email }}</td>
+			<td>{{ li.reason }}</td>
+			   <form action="" method="post">
+        {% csrf_token %}
+
+    <td><input type="date" name="date" required>
+		                         <select name="time" id="iname" type="text" style="width: 150px;height: 50px;" >
+  <option value="10 AM">10 AM</option>
+  <option value="12 AM ">12 AM</option>
+  <option value="2 PM">2 PM</option>
+  <option value="4 PM">4 PM</option><option value="6 PM">6 PM</option>
+
+
+</select>
+        <input type="hidden" name="id" value="{{ li.id }}"><button type="submit">Schedule date and  time</button></td></form>
+<!--			<td><button><a href="AcceptAppo?id={{ li.id }}" >Confirm Appoinment </a></button></td>-->
+			<td><button><a href="RejectAppo?id={{ li.id }}" >Reject Appoinment </a></button></td>
+
+		</tr>
+	{% endfor %}
+
+	</table>
+{% endblock %}

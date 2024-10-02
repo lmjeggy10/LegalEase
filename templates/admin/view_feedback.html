@@ -1,0 +1,60 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+{% if message %}
+    <script> alert("{{ message }}")</script>
+{% endif %}
+
+<style>
+    .positive {
+        color: green;
+        font-weight: bold;
+    }
+    .neutral {
+        color: orange;
+        font-weight: bold;
+    }
+    .negative {
+        color: red;
+        font-weight: bold;
+    }
+    .smiley {
+        font-size: 20px;
+        margin-left: 10px;
+    }
+</style>
+
+<h2>Feedbacks from Users</h2>
+<table class="table table-bordered table-striped table-hover" style="width: 900px; margin-left: 100px;">
+    <thead>
+        <tr>
+            <th class="info" style="background-color: lightgreen;">Feedback</th>
+            <th class="info" style="background-color: lightgreen;">Sentiment</th>
+            <th class="info" style="background-color: lightgreen;">User Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for feedback in feedbacks %}
+        <tr>
+            <td>{{ feedback.feed }}</td>
+            <td>
+                {% if feedback.sentiment == 'Positive' %}
+                    <span class="positive">Positive <span class="smiley">😊</span></span>
+                {% elif feedback.sentiment == 'Negative' %}
+                    <span class="negative">Negative <span class="smiley">😔</span></span>
+                {% else %}
+                    <span class="neutral">Neutral <span class="smiley">😐</span></span>
+                {% endif %}
+            </td>
+            <td>
+                {{ feedback.client.user.first_name }}<br>
+                {{ feedback.client.address }}<br>
+                {{ feedback.client.phone }}<br>
+                {{ feedback.client.user.email }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

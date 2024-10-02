@@ -1,0 +1,40 @@
+
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+
+    <h2 align="center">Lawyers Details </h2>
+
+
+
+	<table class="table table-bordered table-striped table-hover" style="width: 900px; margin-left: 100px;" >
+
+		<th class="info" style="background-color: lightgreen;">Photo</th>
+		<th class="info" style="background-color: lightgreen;">Name</th>
+		<th class="info" style="background-color: lightgreen;">Company</th>
+		<th class="info" style="background-color: lightgreen;">Specialization</th>
+		<th class="info" style="background-color: lightgreen;">Practice Area</th>
+		<th class="info" style="background-color: lightgreen;">Education</th>
+		<th class="info" style="background-color: lightgreen;">Contact</th>
+
+        {% for li in l %}
+
+		<tr>
+			<td><img class="img-responsive" height="200px" width="200px" src="{{ li.photo.url }}" alt=""></td>
+			<td>{{ li.user.first_name }}</td>
+			<td>{{ li.company }}</td>
+			<td>{{ li.speci }}</td>
+			<td>{{ li.parea }}</td>
+			<td>{{ li.education }}</td>
+			<td>{{ li.address}},{{ li.phone }},{{ li.user.email }}</td>
+			<td><button><a href="Appoinment?id={{ li.id }}" >Make an appoinment </a></button></td>
+
+		</tr>
+    {% endfor %}
+
+	</table>
+
+{% endblock %}

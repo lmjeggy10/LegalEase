@@ -1,0 +1,28 @@
+
+{% extends 'lawyer/law_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<aside id="colorlib-hero" class="js-fullheight">
+		<div class="flexslider js-fullheight">
+			<ul class="slides">
+		   	<li style="background-image: url({% static 'images/img_bg_1.jpg' %});">
+		   		<div class="overlay-gradient"></div>
+		   		<div class="container">
+		   			<div class="row">
+			   			<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+			   				<div class="slider-text-inner">
+			   					{% if user.is_authenticated %}
+                                <h1>Welcome {{ user.first_name }}</h1>
+                            {% endif %}
+									<h2>Your Legal Solution starts here!</h2>
+									   				</div>
+			   			</div>
+			   		</div>
+		   		</div>
+		   	</li>
+		 </div>
+	</aside>
+{% endblock %}

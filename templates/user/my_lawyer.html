@@ -1,0 +1,42 @@
+
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<h2 align="center">My Lawyers</h2>
+
+
+
+<table class="table table-bordered table-striped table-hover" style="width: 900px; margin-left: 100px;" >
+
+
+		<th class="info" style="background-color: lightgreen;">Name</th>
+
+		<th class="info" style="background-color: lightgreen;">Reason</th>
+
+	{% for li in l %}
+		<tr>
+
+			<td>{{ li.lawyer.user.first_name }}<br>
+
+				{{ li.lawyer.speci }}<br>
+				{{ li.lawyer.address }}<br>
+				{{ li.lawyer.phone }}<br>
+				{{ li.lawyer.user.email }}<br>
+
+			</td>
+
+
+			<td>{{ li.reason }}</td>
+
+
+
+		</tr>
+        {% endfor %}
+
+
+	</table>
+
+{% endblock %}

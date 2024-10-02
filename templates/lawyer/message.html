@@ -1,0 +1,45 @@
+
+{% extends 'lawyer/law_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<h2 align="center">Messages</h2>
+
+
+
+<table class="table table-bordered table-striped table-hover" style="width: 900px; margin-left: 100px;" >
+
+
+		<th class="info" style="background-color: lightgreen;">Client Name</th>
+
+		<th class="info" style="background-color: lightgreen;">Contact</th>
+		<th class="info" style="background-color: lightgreen;">Reason</th>
+		<th class="info" style="background-color: lightgreen;">File</th>
+		<th class="info" style="background-color: lightgreen;">Replay</th>
+
+
+{% for li in l %}
+		<tr>
+
+			<td>{{ li.client.user.first_name }}</td>
+
+			<td>{{ li.client.address }},{{ li.client.phone }},{{ li.client.user.email }}</td>
+			<td>{{ li.reason }}</td>
+			{% if li.file == 'Null' %}
+             <td>Not Updated</td>
+              {% else %}
+              <td><a href="{{ li.file.url }}">File</a></td>
+            {% endif %}
+
+			<td>{{ li.status }}</td>
+
+
+
+
+		</tr>
+	{% endfor %}
+
+	</table>
+{% endblock %}

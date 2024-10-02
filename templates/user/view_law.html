@@ -1,0 +1,32 @@
+
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<h2 align="center">Lawyers</h2>
+<div id="colorlib-blog">
+		<div class="container">
+			<div class="row">
+
+
+            {% for li in l %}
+				<div class="col-lg-4 col-md-4">
+					<div class="colorlib-blog animate-box">
+						<a href="#"><img class="img-responsive" src="{{ li.photo.url }}" alt=""></a>
+						<div class="blog-text">
+							<h3><a href="#">{{ li.user.first_name}}</a></h3>
+							<p class="meta"><span>{{ li.company }}</span></p>
+							<p>Speclialized, {{ li.speci }}</p>
+							<button><a href="ViewLawDe?id={{ li.id }}" >Read More </a></button>
+						</div>
+					</div>
+				</div>
+                {% endfor %}
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

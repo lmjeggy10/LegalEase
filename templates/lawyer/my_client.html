@@ -1,0 +1,42 @@
+
+{% extends 'lawyer/law_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<h2 align="center">My Clients</h2>
+
+
+
+	<table class="table table-bordered table-striped table-hover" style="width: 900px; margin-left: 100px;" >
+
+
+		<th class="info" style="background-color: lightgreen;">User Name</th>
+
+		<th class="info" style="background-color: lightgreen;">Contact</th>
+		<th class="info" style="background-color: lightgreen;">Reason</th>
+		<th class="info" style="background-color: lightgreen;">Ask</th>
+		<th class="info" style="background-color: lightgreen;">Delete</th>
+
+
+	{% for li in l %}
+
+		<tr>
+
+			<td>{{ li.client.user.first_name }}</td>
+
+			<td>{{ li.client.address }},{{ li.client.phone }},{{ li.client.user.email }}</td>
+			<td>{{ li.reason }}</td>
+
+
+
+			<td><button><a href="AskDetails?id={{ li.client.id }}" >Ask For Details</a></button></td>
+
+			<td><button><a href="DeleteClient?id={{ li.id }}" >Delete</a></button></td>
+
+		</tr>
+	{% endfor %}
+
+	</table>
+{% endblock %}

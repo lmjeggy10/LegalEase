@@ -1,0 +1,42 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<h2 align="center">Client Details </h2>
+
+
+
+	<table class="table table-bordered table-striped table-hover" style="width: 900px; margin-left: 100px;" >
+
+		<th class="info" style="background-color: lightgreen;">Name</th>
+		<th class="info" style="background-color: lightgreen;">Address</th>
+		<th class="info" style="background-color: lightgreen;">Contact</th>
+		<th class="info" style="background-color: lightgreen;">Email</th>
+		<th class="info" style="background-color: lightgreen;">Registration Fee</th>
+		<th class="info" style="background-color: lightgreen;">Action</th>
+
+
+{% for li in  l %}
+
+
+
+
+		<tr>
+
+			<td>{{ li.user.first_name }}</td>
+			<td>{{ li.address }}</td>
+			<td>{{ li.phone }}</td>
+			<td>{{ li.user.email }}</td>
+			<td>{{ li.payment }}  Paid</td>
+			<td><button><a href="reject_client?id={{ li.user_id}}">Deactivate</a></button></td>
+
+
+		</tr>
+{% endfor %}
+
+	</table>
+
+
+{% endblock %}

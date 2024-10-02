@@ -1,0 +1,4 @@
+Django==3.2
+django-crispy-forms==1.11.2
+Pillow==8.2.0
+virtualenv==20.4.6

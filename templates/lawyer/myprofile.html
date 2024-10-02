@@ -1,0 +1,44 @@
+
+{% extends 'lawyer/law_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<aside id="colorlib-hero" class="js-fullheight">
+		<div class="flexslider js-fullheight">
+			<ul class="slides">
+		   	<li style="background-image: url({% static 'images/img_bg_1.jpg' %});">
+		   		<div class="overlay-gradient"></div>
+		   		<div class="container">
+		   			<div class="row">
+
+			   		<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+			   				<div class="slider-text-inner">
+			   					<h1>Details About As A Lawyer</h1>
+			   					<form action="" method="post">
+                                    {% csrf_token %}
+								<div >
+
+									<label style="color: black">Your Education</label>
+									<input style="width: 800px;color: black" type="text" name="edu" value="{{ l.education }}" required=""><br><br>
+									<label style="color: black">Practiced Area</label>
+									<input style="width: 800px;color: black" type="text" name="pra" value="{{ l.parea }}" required=""><br><br>
+									<label style="color: black">Your Specalisation eg..(Criminal,Civil')</label>
+									<input style="width: 800px;color: black" type="text" name="spe" value="{{ l.speci }}" required=""><br><br>
+                                    <input type="hidden" value="{{ l.id }}" name="id">
+
+									<button style="background-color:black;border-radius: 25px;" type="Submit" name="register">Update/Add</button>
+								</div>
+								</form>
+									   				</div>
+			   			</div>
+
+
+			   		</div>
+		   		</div>
+		   	</li>
+		 </div>
+	</aside>
+
+{% endblock %}
