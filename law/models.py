@@ -30,6 +30,7 @@ class Client(models.Model):
     con_password= models.CharField(max_length=50, null=True)
     status = models.CharField(max_length=50, null=True)
     payment = models.CharField(max_length=50, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class Feedback(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)

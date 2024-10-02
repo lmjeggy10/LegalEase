@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Client and Appointment Report</h1>
+        <p>Lawyer: {{ lawyer.user.first_name }} {{ lawyer.user.last_name }}</p>
+        <p>Date Range: {{ start_date }} to {{ end_date }}</p>
+    </div>
+
+    <!-- Client List Section -->
+    <div class="client-list">
+        <h2 class="section-title">Client List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Client Name</th>
+                    <th>Contact</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in clients %}
+                <tr>
+                    <td>{{ appointment.client.user.first_name }} {{ appointment.client.user.last_name }}</td>
+                    <td>{{ appointment.client.phone }}</td>
+                    <td>{{ appointment.client.address }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Appointment Summary Section -->
+    <div class="appointment-summary">
+        <h2 class="section-title">Appointment Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Client Name</th>
+                    <th>Status</th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.time }}</td>
+                    <td>{{ appointment.client.user.first_name }} {{ appointment.client.user.last_name }}</td>
+                    <td>{{ appointment.status }}</td>
+                    <td>{{ appointment.reason }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

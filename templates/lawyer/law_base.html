@@ -4,7 +4,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Law And Order</title>
+	<title>LegalEase</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -85,9 +85,19 @@
 
 							<li><a href="Myclient">My Client</a></li>
 							<li><a href="MessageDetails">Messages</a></li>
+							<li class="has-dropdown">
+								<a href="#">Reports</a>
+								<ul class="dropdown">
+									<li><a href="{% url 'law:generate_report' %}">Generate Report</a></li>
+									{% comment %} <li><a href="#">View Previous Reports</a></li> {% endcomment %}
+								</ul>
+							</li>
 							<li><a href="{% url 'law:visualizations' %}">View Client Visualizations</a></li>
+							
 							<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
                        <li>
                            <div class="btn-group">

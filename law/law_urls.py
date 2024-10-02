@@ -1,7 +1,7 @@
 from django.urls import path
 
 from law.law_views import IndexView, Profile, ViewNewAppoinments, AcceptAppo, RejectAppo, AddClient, ViewAppoinments, \
-    Myclient, AskDetails, DeleteClient,MessageDetails, VisualizationView
+    Myclient, AskDetails, DeleteClient,MessageDetails, VisualizationView, GenerateReportView
 from django.contrib.auth import views as auth_views
 urlpatterns = [
 
@@ -18,6 +18,7 @@ urlpatterns = [
     path('MessageDetails',MessageDetails.as_view()),
 
     path('visualizations/', VisualizationView.as_view(), name='visualizations'),
+    path('generate_report/', GenerateReportView.as_view(), name='generate_report'),
 
     path('logout/', auth_views.LogoutView.as_view(
         next_page='/'
