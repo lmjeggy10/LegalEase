@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clients per Lawyer</title>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2em;
+            color: #2d6a4f;
+            margin-bottom: 20px;
+        }
+
+        .chart-container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #clientsChart {
+            max-width: 100%;
+        }
+
+        /* Back button styling */
+        .back-button {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #2d6a4f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:hover {
+            background-color: #1b4432;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Title -->
+    <h2>Clients per Lawyer</h2>
+
+    <!-- Chart Container -->
+    <div class="chart-container">
+        <canvas id="clientsChart"></canvas>
+    </div>
+
+    <!-- Back to Admin Home Button -->
+    <a href="/admin" class="back-button">Back to Admin Home</a>
+
+    <!-- Chart.js Script -->
+    <script>
+        const ctx = document.getElementById('clientsChart').getContext('2d');
+        const clientsChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ lawyers|safe }},  // Safe to render JSON as chart labels
+                datasets: [{
+                    label: 'Number of Clients',
+                    data: {{ client_counts|safe }},  // Safe to render JSON as chart data
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        ticks: {
+                            maxRotation: 45,  // Rotate labels for better visibility
+                            minRotation: 45
+                        }
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return 'Clients: ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

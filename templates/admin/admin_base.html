@@ -92,6 +92,14 @@
 {#							</li>#}
 
 							<li><a href="FeedbackView">Suggestions</a></li>
+							<li class="has-dropdown">
+								<a href="#">Visualizations</a>
+								<ul class="dropdown">
+									<li><a href="{% url 'admin:feedback_pie_chart' %}">Pie Chart</a></li>
+									<li><a href="{% url 'admin:clients_per_lawyer' %}">Clients per Lawyer</a></li>
+									
+								</ul>
+							</li>
 
 
 							<!-- <li class="btn-cta"><a href="#"><span>Sign Up</span></a></li> -->

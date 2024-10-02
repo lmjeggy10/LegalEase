@@ -30,7 +30,10 @@
 			<td>{{ li.phone }}</td>
 			<td>{{ li.user.email }}</td>
 			<td>{{ li.payment }}  Paid</td>
-			<td><button><a href="reject_client?id={{ li.user_id}}">Deactivate</a></button></td>
+			<td><button><a href="reject_client?id={{ li.user_id}}">Deactivate</a></button>
+				<button><a href="{% url 'admin:generate_client_report' li.id %}">Generate Report (PDF)</a></button>
+			</td>
+			
 
 
 		</tr>
