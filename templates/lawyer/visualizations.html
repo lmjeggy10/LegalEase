@@ -1,13 +1,91 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Statistics</title>
+    
+    <!-- Optional: Include Bootstrap for styling (if needed) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    
+    <!-- Custom CSS for styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            padding: 20px;
+        }
 
-{% block content %}
-<h2>Client Statistics</h2>
-<div>
-    <img src="data:image/png;base64,{{ chart }}" alt="Client Chart"/>
-</div>
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #2d6a4f;
+            margin-bottom: 30px;
+        }
 
-<div class="chart">
-    <h3>Monthly Client Growth</h3>
-    <img src="data:image/png;base64,{{ client_growth_chart }}" alt="Monthly Client Growth">
-</div>
-{% endblock %}
+        .chart-container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-container h3 {
+            text-align: center;
+            font-size: 1.8em;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .chart-container img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #2d6a4f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 1.2em;
+        }
+
+        .back-button:hover {
+            background-color: #1b4432;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Page Title -->
+    <h2>Client Statistics</h2>
+
+    <!-- Chart Container -->
+    <div class="chart-container">
+        <!-- Client Chart -->
+        <img src="data:image/png;base64,{{ chart }}" alt="Client Chart">
+        
+        <!-- Monthly Growth Chart -->
+        <h3>Monthly Client Growth</h3>
+        <img src="data:image/png;base64,{{ client_growth_chart }}" alt="Monthly Client Growth">
+    </div>
+
+    <!-- Back to Lawyer Home Button -->
+    <a href="/law" class="back-button">Back to Lawyer Home</a>
+
+</body>
+</html>
